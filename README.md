@@ -1,1 +1,1 @@
-# basci-website
+this is an expense tracker project building with reactjs framework. Reactjs is a Javascript framework. At first I installed visual studio code Then I installed nodejs to use npm for creating react project Then i created react project by using: npx create-react-app my-app After that I started to build my app by getting into my application floder(cd my-app).
