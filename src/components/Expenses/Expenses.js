@@ -1,0 +1,59 @@
+import Card from "../UI/Card";
+import React, { useState } from "react";
+import ExpensesChart from "./ExpensesChart";
+import "./Expenses.css";
+import ExpenseFilter from "./ExpenseFilter";
+import ExpensesList from "./ExpensesList";
+
+function Expenses(props) {
+  const [filteredYear, setFilteredYear] = useState("2020");
+
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  };
+
+  const filteredExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
+  return (
+    <div>
+      <Card className="expenses">
+        <ExpenseFilter
+          selected={filteredYear}
+          onChangeFilter={filterChangeHandler}
+        />
+
+        <ExpensesChart expenses={filteredExpenses} />
+        {/* here we listened data manuel but if the user add new item   */}
+        {/* the item will not be add into our array unless we add it , but this is not good */}
+        {/* to let the react add new item for us into our array, we must use map() method */}
+        {/* map()method create a new array base to another array */}
+        {/* output conditional content */}
+        <ExpensesList items={filteredExpenses} />
+        {/* <ExpenseItem
+          title={props.items[0].title}
+          amount={props.items[0].amount}
+          date={props.items[0].date}
+        />
+        <ExpenseItem
+          title={props.items[1].title}
+          amount={props.items[1].amount}
+          date={props.items[1].date}
+        />
+        <ExpenseItem
+          title={props.items[2].title}
+          amount={props.items[2].amount}
+          date={props.items[2].date}
+        />
+        <ExpenseItem
+          title={props.items[3].title}
+          amount={props.items[3].amount}
+          date={props.items[3].date}
+        /> */}
+      </Card>
+    </div>
+  );
+}
+
+export default Expenses;

@@ -1,4 +1,5 @@
 import "./Card.css";
+import React from "react";
 
 function Card(props) {
   // please do not forgot whitespace when write the default
